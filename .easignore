@@ -1,0 +1,37 @@
+# Node modules
+node_modules/
+
+# Expo build artifacts
+.expo/
+.expo-shared/
+dist/
+build/
+
+# iOS heavy folders not needed for EAS
+ios/Pods/
+ios/build/
+ios/parplay.xcworkspace/
+ios/parplay.xcodeproj/project.xcworkspace/
+ios/build/generated/
+
+# Android (not used)
+android/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temp files
+*.tmp
+*.temp
+*.cache
+
+# Backend and server folders
+supabase/
+backend/
+video-worker/
+
+# Large assets not needed for build
+public/
