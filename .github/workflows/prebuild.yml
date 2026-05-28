@@ -25,38 +25,10 @@ jobs:
       - name: Run Expo Prebuild
         run: npx expo prebuild --non-interactive --platform ios
 
-       name: Expo Prebuild (iOS)
-
-on:
-  workflow_dispatch:
-
-jobs:
-  prebuild:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install Expo CLI
-        run: npm install -g expo-cli
-
-      - name: Run Expo Prebuild
-        run: npx expo prebuild --non-interactive --platform ios
-
-       - name: Commit and push changes
+      - name: Commit and push changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add -f ios
           git commit -m "auto: prebuild ios" || echo "No changes"
           git push
-
