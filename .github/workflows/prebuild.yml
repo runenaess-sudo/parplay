@@ -1,4 +1,4 @@
-name: Expo Prebuild (iOS + Android)
+name: Expo Prebuild (iOS)
 
 on:
   workflow_dispatch:
@@ -9,12 +9,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -25,12 +23,12 @@ jobs:
         run: npm install -g expo-cli
 
       - name: Run Expo Prebuild
-        run: npx expo prebuild --non-interactive
+        run: npx expo prebuild --non-interactive --platform ios
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add ios android
-          git commit -m "chore: auto-prebuild native folders" || echo "No changes to commit"
+          git add ios
+          git commit -m "auto: prebuild ios" || echo "No changes"
           git push
